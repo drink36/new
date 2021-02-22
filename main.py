@@ -47,7 +47,7 @@ while(1):
             td = title.find_all("td")
             if td[0].getText() in array:
                 num += 1
-                if((int("".join(list(filter(str.isdigit, (td[10].getText().strip())))))) > (int("".join(list(filter(str.isdigit, (td[7].getText().strip())[:3])))))):
+                if((int("".join(list(filter(str.isdigit, (td[10].getText().strip())))))) == (int("".join(list(filter(str.isdigit, (td[7].getText().strip())[:3])))))):
                     # print(td[0].getText().strip())
                     # print(td[2].getText().strip())
                     # print(
@@ -71,7 +71,7 @@ while(1):
                     r = requests.post("https://notify-api.line.me/api/notify",
                                       headers=headers, params=params)
         if(i != 3):
-            if(num == 0):
+            if(num == 0 and i > 0):
                 break
             button = (By.XPATH, "//*[contains(text(),'chevron_right')]")
             button1 = (By.CLASS_NAME, "v-datatable__actions__range-controls")
