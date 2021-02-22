@@ -36,7 +36,7 @@ while(1):
     time.sleep(1)
     if(BeautifulSoup(chrome.page_source, 'lxml') == None):
         continue
-    for i in range(3):
+    for i in range(4):
         num = 0
         soup = BeautifulSoup(chrome.page_source, 'lxml')
         titles = soup.find_all('tr')
@@ -70,7 +70,7 @@ while(1):
                         "message": td[0].getText().strip() + '\n' + td[2].getText().strip()+'\n'+td[8].getText().strip()+'\n'+"剩餘"+str((int("".join(list(filter(str.isdigit, (td[10].getText().strip())))))) - (int("".join(list(filter(str.isdigit, (td[7].getText().strip())[:3]))))))}
                     r = requests.post("https://notify-api.line.me/api/notify",
                                       headers=headers, params=params)
-        if(i != 2):
+        if(i != 3):
             if(num == 0):
                 break
             button = (By.XPATH, "//*[contains(text(),'chevron_right')]")
